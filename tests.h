@@ -12,5 +12,8 @@ std::string Iterator(std::string FileName);
 std::string Rdbuf(std::string FileName);
 std::string RdbufMove(std::string FileName);
 std::string TellSeekRead(std::string FileName);
+std::string CTellSeekRead(std::string FileName);
+std::string AssignIterator(std::string FileName);
+std::string BackInsertIterator(std::string FileName);
 
 #endif

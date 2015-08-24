@@ -7,13 +7,25 @@
 const std::string filename("temp.txt");
 const std::vector<uint64_t> Sizes = {100, 512, 1024, 1000000, 10000000};//, 100000000};
 
-std::vector<Function> ToBenchmark = {Appending, Eof, Iterator, Rdbuf, RdbufMove, TellSeekRead};
+std::vector<Function> ToBenchmark = {Appending,
+                                     Eof,
+                                     Iterator,
+                                     Rdbuf,
+                                     RdbufMove,
+                                     TellSeekRead,
+                                     CTellSeekRead,
+                                     AssignIterator,
+                                     BackInsertIterator
+                                    };
 std::map<Function, std::string> Names = { {Appending, "Appending"},
                                           {Eof, "Eof"},
                                           {Iterator, "Iterator"},
                                           {Rdbuf, "Rdbuf"},
                                           {RdbufMove, "RdbufMove"},
-                                          {TellSeekRead, "TellSeekRead"}
+                                          {TellSeekRead, "TellSeekRead"},
+                                          {CTellSeekRead, "CTellSeekRead"},
+                                          {AssignIterator, "AssignIterator"},
+                                          {BackInsertIterator, "BackInsertIterator"}
                                         };
 std::ostream& Out = std::cout;
 

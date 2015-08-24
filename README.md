@@ -17,8 +17,9 @@ but the compilers surely realized that freed memory could be re-used and do not 
 the execution ends.
 
 TellSeekRead is clearly a minimalistic and efficient way to read files, but it seems a bit verbose for the
-unitiated. It appears that anything using std::getline is somewhat optimized. Whatever checks it is doing have a
-negligible cost, but the line by line input and lack of optimization for whole file slurping hurt it. Something
+unitiated. CTellSeekRead is similar but seems slower on smalle files. It appears that anything using
+std::getline is somewhat optimized. Whatever checks it is doing have a negligible cost, but the line
+by line input and lack of optimization for whole file slurping hurt it. Something
 is happening with those ifstream_iterators to cause them to run slower than in linear time. I suspect that, on my
 system at least, that the construction of the stringstream has some cost or skipping straight to the read buffer
 is skipping some kind of optimization the ifstream uses, perhaps respecting blocksize or CPU cache size, regardless
@@ -26,13 +27,13 @@ why the Rdbuf methods are categorically faster than istream_iterators but slower
 
 Here is a more direct summary:
 
-  Fastest - TellSeekRead - This has the system provide an easy to get the size and reads the file in one go.
+  Fastest - TellSeekRead and CTellSeekRead- These have the system provide an easy to get the size and reads the file in one go.
 
   Faster - Getline Appending and Eof - The checking of chars does not seem to impose any cost.
 
   Fast - RdbufMove and Rdbuf -  The std::move seems to make no difference in release.
 
-  Slow - Iterator - Something is wrong with this on.
+  Slow - Iterator, BackInsertIterator and AssignIterator - Something is wrong with iterators and input streams. The work great in memory, but not here.
 
 
 I tried this on GCC 4.9.2, with a mobile i7 on a RAID1 of SSDs pulling about 1GB/sec formatted as EXT4 and
