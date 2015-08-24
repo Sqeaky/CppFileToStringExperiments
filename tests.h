@@ -11,5 +11,6 @@ std::string Eof(std::string FileName);
 std::string Iterator(std::string FileName);
 std::string Rdbuf(std::string FileName);
 std::string RdbufMove(std::string FileName);
+std::string TellSeekRead(std::string FileName);
 
 #endif
