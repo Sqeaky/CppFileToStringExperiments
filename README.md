@@ -23,29 +23,29 @@ Debug numbers:
     Eof                 0           0           0           4           46          685         122         
     To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
-Name / Size         100         512         1024        1000000     10000000    100000000   Average     
-Rdbuf               0           0           0           11          123         1017        191         
-Appending           0           0           0           4           46          676         121         
-Eof                 0           0           0           4           47          688         123         
-Iterator            0           0           0           707         7120        71044       13145       
-To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+    Name / Size         100         512         1024        1000000     10000000    100000000   Average     
+    Rdbuf               0           0           0           11          123         1017        191         
+    Appending           0           0           0           4           46          676         121         
+    Eof                 0           0           0           4           47          688         123         
+    Iterator            0           0           0           707         7120        71044       13145       
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
 
 Release Numbers:
 
-Name / Size         100         512         1024        1000000     10000000    100000000   Average     
-Appending           0           0           0           13          90          690         132         
-Eof                 0           0           0           4           46          677         121         
-Rdbuf               0           0           0           4           69          967         173         
-Iterator            0           0           0           38          403         4272        785         
-To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+    Name / Size         100         512         1024        1000000     10000000    100000000   Average     
+    Appending           0           0           0           13          90          690         132         
+    Eof                 0           0           0           4           46          677         121         
+    Rdbuf               0           0           0           4           69          967         173         
+    Iterator            0           0           0           38          403         4272        785         
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
-Name / Size         100         512         1024        1000000     10000000    100000000   Average     
-Eof                 0           0           0           13          93          691         132         
-Rdbuf               0           0           0           4           68          957         171         
-Iterator            0           0           0           38          403         4252        782         
-Appending           0           0           0           3           43          692         123         
-To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+    Name / Size         100         512         1024        1000000     10000000    100000000   Average     
+    Eof                 0           0           0           13          93          691         132         
+    Rdbuf               0           0           0           4           68          957         171         
+    Iterator            0           0           0           38          403         4252        782         
+    Appending           0           0           0           3           43          692         123         
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
 In my dozen or so runs of this it seems whatever test runs first suffers about a 10ms penalty. This is likely 
 caused by memory allocation. Memory is freed from my program as far as the code I have written, but the compilers
