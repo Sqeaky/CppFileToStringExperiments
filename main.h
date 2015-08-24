@@ -1,14 +1,12 @@
 // This is covered under the MIT License see LICENSE for details
 // Sqeaky - Joseph Toppi - toppij@blacktoppstudios.com
 
-#include <string>
+#ifndef _main_h
+#define _main_h
 
-typedef std::string (*Function)(void);
-
-std::string Appending();
-std::string Eof();
-std::string Iterator();
-std::string Rdbuf();
+#include "config.h"
 
 void CreateFile();
 uint64_t DoBenchmark(Function ToBenchmark, uint64_t Size);
+
+#endif

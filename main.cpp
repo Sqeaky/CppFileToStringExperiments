@@ -13,28 +13,7 @@
 #include <cassert>
 
 #include "main.h"
-
-// Configuration
-const std::string filename("temp.txt");
-const std::vector<uint64_t> Sizes = {100, 512, 1024, 1000000, 10000000};//, 100000000};
-
-std::vector<Function> ToBenchmark = {Appending, Eof, Iterator, Rdbuf};
-std::map<Function, std::string> Names = { {Appending, "Appending"},
-                                          {Eof, "Eof"},
-                                          {Iterator, "Iterator"},
-                                          {Rdbuf, "Rdbuf"}
-                                        };
-std::ostream& Out = std::cout;
-
-const int NameColumn = 20;
-const int Column = 12;
-const uint64_t TestIterations  = 500;
-
-std::random_device RandomDevice;
-std::mt19937 Generator(RandomDevice());
-
-// Store everything for output of one random char to defeat optimization.
-std::string HardToOptimizeOutResultsStorage;
+#include "tests.h"
 
 int main(void)
 {
@@ -75,44 +54,6 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-
-
-std::string Appending()
-{
-    std::string Results;
-    std::ifstream ResultReader(filename);
-    while(ResultReader)
-    {
-        std::getline(ResultReader, Results);
-        Results.push_back('\n');
-    }
-    return Results;
-}
-
-std::string Eof()
-{
-    std::string Results;
-    std::ifstream ResultReader(filename);
-    std::getline(ResultReader, Results, (char)std::char_traits<char>::eof());
-    return Results;
-}
-
-std::string Iterator()
-{
-    std::ifstream ResultReader(filename);
-    std::string Results((std::istreambuf_iterator<char>(ResultReader)),
-                         std::istreambuf_iterator<char>());
-    return Results;
-}
-
-std::string Rdbuf()
-{
-    std::ifstream ResultReader(filename);
-    std::ostringstream Results;
-    Results << ResultReader.rdbuf();
-    return Results.str();
-}
-
 void CreateFile(uint64_t Size)
 {
     std::ofstream truncate(filename);
@@ -130,7 +71,11 @@ uint64_t DoBenchmark(Function ToBenchmark, uint64_t Size)
     std::uniform_int_distribution<> RandomChar(0,Size-1);
     auto start = std::chrono::high_resolution_clock::now();
     for(uint64_t Counter = 0; Counter < TestIterations; Counter++)
-       { HardToOptimizeOutResultsStorage.push_back( ToBenchmark()[RandomChar(Generator)] ); }
+    {
+        HardToOptimizeOutResultsStorage.push_back(
+            ToBenchmark(filename)[RandomChar(Generator)]
+        );
+    }
     auto stop = std::chrono::high_resolution_clock::now();
 
     return std::chrono::duration_cast<std::chrono::milliseconds>(stop-start).count();

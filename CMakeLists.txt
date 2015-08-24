@@ -11,11 +11,22 @@ message ("${PROJECT_NAME} - Starting Configuration.")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra -std=c++14")
 
 set(SRC_LIST
+    "config.cpp"
     "main.cpp"
+    "tests.cpp"
 )
 
 set(HEADER_LIST
+    "config.h"
     "main.h"
+    "tests.h"
+)
+
+add_custom_target(${PROJECT_NAME}_SpareFileGrabber ALL
+                  COMMAND ${CMAKE_COMMAND} -E echo "Ensuring spare files are made visible to IDEs."
+                  WORKING_DIRECTORY ${${PROJECT_NAME}_BINARY_DIR}
+                  VERBATIM
+                  SOURCES ${${PROJECT_NAME}_SOURCE_DIR}/README.md
 )
 
 ##############################################################################
