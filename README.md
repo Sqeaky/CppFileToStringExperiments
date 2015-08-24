@@ -16,12 +16,12 @@ got these numbers:
 
 Debug numbers:
 
-Name / Size         100         512         1024        1000000     10000000    100000000   Average     
-Rdbuf               0           0           0           11          125         1018        192         
-Iterator            0           0           0           708         7150        71268       13187       
-Appending           0           0           0           4           47          686         122         
-Eof                 0           0           0           4           46          685         122         
-To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+    Name / Size         100         512         1024        1000000     10000000    100000000   Average     
+    Rdbuf               0           0           0           11          125         1018        192         
+    Iterator            0           0           0           708         7150        71268       13187       
+    Appending           0           0           0           4           47          686         122         
+    Eof                 0           0           0           4           46          685         122         
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
 Name / Size         100         512         1024        1000000     10000000    100000000   Average     
 Rdbuf               0           0           0           11          123         1017        191         
