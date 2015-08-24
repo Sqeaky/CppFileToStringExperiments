@@ -56,8 +56,10 @@ std::string RdbufMove(std::string FileName)
 
 std::string TellSeekRead(std::string FileName)
 {
-    std::ifstream ResultReader(FileName, std::ios::ate);
-    auto fileSize = ResultReader.tellg();
+    std::ifstream ResultReader(FileName, std::ios::binary|std::ios::ate);
+    auto FileSize = ResultReader.tellg();
     ResultReader.seekg(std::ios::beg);
-    return std::string(fileSize,0);
+    std::string Results(FileSize,0);
+    ResultReader.read(&Results[0],FileSize);
+    return Results;
 }
