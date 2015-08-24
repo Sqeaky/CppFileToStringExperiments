@@ -56,3 +56,39 @@ cost. While something is happening with those ifstream_iterators to cause them t
 I suspect that on my system at least that the construction of the stringstream has some cost or skipping straight
 to the read buffer is skipping some kind of optimization the ifstream uses, perhaps respecting blocksize or CPU
 cache size.
+
+
+Here I upped the iteration count to 500 and dropped of the largest file read. The penalty for running first grows
+to around 100% but still doesn't cause either Eof or Appending to fail to the other test, but whichever of those
+two runs first is faster. The gaps between the tests increased in general.
+
+    Doing 500 iterations of the file read in each benchmark.
+    Name / Size         100         512         1024        1000000     10000000    Average     
+    Appending           2           2           2           659         4404        1013        
+    Eof                 2           2           2           173         4386        913         
+    Iterator            2           3           4           1923        23201       5026        
+    Rdbuf               2           2           2           175         5970        1230        
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+
+    Doing 500 iterations of the file read in each benchmark.
+    Name / Size         100         512         1024        1000000     10000000    Average     
+    Rdbuf               2           2           3           555         5897        1291        
+    Iterator            2           3           4           1914        23012       4987        
+    Eof                 2           2           2           175         2114        459         
+    Appending           2           2           2           177         2095        455         
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+
+    Doing 500 iterations of the file read in each benchmark.
+    Name / Size         100         512         1024        1000000     10000000    Average     
+    Appending           2           2           2           651         4415        1014        
+    Rdbuf               2           2           2           183         5988        1235        
+    Iterator            2           3           4           1916        23180       5021        
+    Eof                 2           2           2           176         2088        454         
+    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
+
+    Doing 500 iteration sof the file read in each benchmark.
+    Name / Size         100         512         1024        1000000     10000000    Average     
+    Eof                 2           2           2           649         4453        1021        
+    Iterator            2           3           4           1927        23180       5023        
+    Rdbuf               3           2           2           177         6031        1243        
+    Appending           3           2           2           178         2090        455         
