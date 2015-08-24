@@ -39,53 +39,54 @@ Here is a more direct summary:
 I tried this on GCC 4.9.2, with a mobile i7 on a RAID1 of SSDs pulling about 1GB/sec formatted as EXT4 and
 got these numbers:
 
-
     Doing 1000 iterations of the file read in each benchmark.
     Name / Size         100         512         1024        1000000     10000000    Average
-    Appending           3           2           2           828         5616        1290
-    RdbufMove           3           3           3           223         4235        893
-    Eof                 3           2           2           222         2772        600
-    TellSeekRead        3           3           2           105         1493        321
-    Iterator            3           3           5           2429        27851       6058
-    Rdbuf               3           3           3           219         6705        1386
+    Eof                 3           2           2           835         6021        1372
+    RdbufMove           3           3           3           224         4303        907
+    BackInsertIterator  3           4           5           2697        27602       6062
+    TellSeekRead        3           3           2           104         1490        320
+    CTellSeekRead       4           4           4           108         1494        322
+    Iterator            3           3           5           2419        28954       6276
+    AssignIterator      3           4           5           2502        30140       6530
+    Rdbuf               3           3           3           221         7878        1621
+    Appending           3           2           2           223         2792        604
     To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
     Doing 1000 iterations of the file read in each benchmark.
     Name / Size         100         512         1024        1000000     10000000    Average
-    Appending           5           4           4           844         5233        1218
-    TellSeekRead        3           3           3           109         1508        325
-    Eof                 4           3           2           217         2767        598
-    Rdbuf               4           3           3           241         6761        1402
-    RdbufMove           4           3           3           246         6732        1397
-    Iterator            3           4           5           2429        27909       6070
+    Iterator            3           4           6           2915        28883       6362
+    CTellSeekRead       4           4           4           111         1549        334
+    RdbufMove           3           3           3           225         4294        905
+    BackInsertIterator  3           4           5           2748        27517       6055
+    AssignIterator      4           4           5           2492        30082       6517
+    TellSeekRead        3           2           2           104         1486        319
+    Appending           3           2           2           216         2832        611
+    Rdbuf               3           3           3           221         7774        1600
+    Eof                 3           2           2           215         2816        607
     To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
     Doing 1000 iterations of the file read in each benchmark.
     Name / Size         100         512         1024        1000000     10000000    Average
-    Rdbuf               3           3           3           707         8182        1779
-    TellSeekRead        2           2           3           111         1508        325
-    Appending           3           2           2           215         2762        596
-    Eof                 3           2           2           216         2783        601
-    RdbufMove           3           2           3           218         8136        1672
-    Iterator            3           3           5           2424        29112       6309
+    Rdbuf               4           3           3           714         8055        1755
+    Eof                 3           3           2           224         2744        595
+    TellSeekRead        3           3           2           107         1539        330
+    RdbufMove           3           3           3           221         7916        1629
+    Iterator            3           4           5           2438        29119       6313
+    CTellSeekRead       4           4           4           113         1533        331
+    BackInsertIterator  4           4           5           2693        27213       5983
+    AssignIterator      4           4           5           2496        28808       6263
+    Appending           3           3           3           215         2852        615
     To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
 
     Doing 1000 iterations of the file read in each benchmark.
     Name / Size         100         512         1024        1000000     10000000    Average
-    Eof                 3           2           3           871         5815        1338
-    Rdbuf               3           3           3           225         4270        900
-    Appending           3           2           2           220         2737        592
-    TellSeekRead        3           3           2           108         1503        323
-    RdbufMove           3           2           3           224         8153        1677
-    Iterator            3           4           5           2697        30097       6561
-    To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
-
-    Doing 1000 iterations of the file read in each benchmark.
-    Name / Size         100         512         1024        1000000     10000000    Average
-    TellSeekRead        5           3           3           107         1488        321
-    Eof                 3           2           2           216         5788        1202
-    Iterator            3           4           5           2432        29148       6318
-    Rdbuf               3           3           3           225         8191        1685
-    RdbufMove           3           3           3           220         8259        1697
-    Appending           3           3           3           226         2767        600
+    Eof                 4           3           2           832         6073        1382
+    RdbufMove           3           3           3           230         4310        909
+    BackInsertIterator  4           4           6           2724        27629       6073
+    TellSeekRead        3           3           3           108         1489        321
+    Appending           3           3           3           224         2767        600
+    CTellSeekRead       4           4           4           110         1501        324
+    Iterator            3           4           5           2435        29203       6330
+    Rdbuf               4           3           3           226         7806        1608
+    AssignIterator      3           4           5           2508        30964       6696
     To Prevent Really smart compilers from optimizing anything out here is a random char of the intermediary output: A
