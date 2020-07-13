@@ -23,7 +23,8 @@ int main(void)
 
     HardToOptimizeOutResultsStorage.reserve(TestIterations);
 
-    Out << "Doing " << TestIterations << " iterations of the file read in each benchmark."
+    Out << "Doing " << TestIterations << " iterations of the file read in each benchmark. "
+        << "Output is milliseconds, lower is better."
         << std::endl;
 
     Out << std::left << std::scientific << std::setw(NameColumn) << "Name / Size";
